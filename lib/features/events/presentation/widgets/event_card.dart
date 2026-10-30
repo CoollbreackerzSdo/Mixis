@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 
 import 'package:mixis/app/localization/app_localizations.dart';
 import 'package:mixis/app/theme/pixel_decorations.dart';
+
 import '../../domain/entities/event.dart';
 import 'state_chip.dart';
 
@@ -43,16 +44,27 @@ class EventCard extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                Icon(Icons.calendar_month, size: 18, color: Theme.of(context).colorScheme.primary),
+                Icon(
+                  Icons.calendar_month,
+                  size: 18,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
                 const SizedBox(width: 6),
                 Text(
                   DateFormat('dd/MM/yyyy HH:mm').format(event.creation),
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w600),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
                 ),
                 const Spacer(),
                 Text(
                   '${l.code}: ${event.code.substring(0, 8)}',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(fontFamily: 'monospace'),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        fontFamily: 'monospace',
+                        fontWeight: FontWeight.w700,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
                 ),
               ],
             ),

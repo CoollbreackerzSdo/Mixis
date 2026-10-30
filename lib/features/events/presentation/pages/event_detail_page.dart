@@ -26,13 +26,17 @@ class EventDetailPage extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(Icons.calendar_month, size: 16, color: Theme.of(context).colorScheme.primary),
+                  Icon(Icons.calendar_month, size: 18, color: Theme.of(context).colorScheme.primary),
                   const SizedBox(width: 6),
-                  Text(
-                    DateFormat('dd/MM/yyyy HH:mm').format(event.creation),
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w600),
+                  Expanded(
+                    child: Text(
+                      DateFormat('dd/MM/yyyy HH:mm').format(event.creation),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.w700,
+                            color: Theme.of(context).colorScheme.onSurface,
+                          ),
+                    ),
                   ),
-                  const Spacer(),
                   IconButton(
                     onPressed: () => Navigator.of(context).pushReplacement(
                       MaterialPageRoute(builder: (_) => EventFormPage(event: event)),
@@ -62,6 +66,15 @@ class EventDetailPage extends StatelessWidget {
                   ),
                 ],
               ),
+              const SizedBox(height: 6),
+              Text(
+                '${l.code}: ${event.code}',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      fontFamily: 'monospace',
+                      fontWeight: FontWeight.w700,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
+              ),
               const SizedBox(height: 12),
               StateChip(state: event.state),
               const SizedBox(height: 8),
@@ -69,8 +82,6 @@ class EventDetailPage extends StatelessWidget {
               const SizedBox(height: 12),
               Text(event.description.isEmpty ? '—' : event.description,
                   style: Theme.of(context).textTheme.bodyLarge),
-              const SizedBox(height: 16),
-              Text('${l.code}: ${event.code}', style: Theme.of(context).textTheme.bodySmall?.copyWith(fontFamily: 'monospace')),
             ],
           ),
         ),

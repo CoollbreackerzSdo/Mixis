@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:mixis/app/localization/app_localizations.dart';
+import '../../../../app/localization/app_localizations.dart';
 import '../../domain/entities/event.dart';
 import '../providers/event_provider.dart';
 
@@ -56,13 +56,31 @@ class _EventFormPageState extends State<EventFormPage> {
   Widget build(BuildContext context) {
     final l = AppLocalizations.of(context)!;
     return Scaffold(
-      appBar: AppBar(title: Text(widget.event == null ? l.newEvent : l.editEvent)),
+      appBar: AppBar(
+        title: Text(widget.event == null ? l.newEvent : l.editEvent),
+        actions: [
+          IconButton(
+            onPressed: _save,
+            icon: const Icon(Icons.check),
+            tooltip: l.save,
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Form(
           key: _formKey,
           child: ListView(
             children: [
+              DropdownButtonFormField<EventState>(
+                initialValue: _state,
+                decoration: InputDecoration(labelText: l.state),
+                items: EventState.values
+                    .map((s) => DropdownMenuItem(value: s, child: Text(_stateLabel(l, s))))
+                    .toList(),
+                onChanged: (v) => setState(() => _state = v ?? _state),
+              ),
+              const SizedBox(height: 12),
               TextFormField(
                 controller: _nameCtrl,
                 decoration: InputDecoration(labelText: l.name),
@@ -72,21 +90,7 @@ class _EventFormPageState extends State<EventFormPage> {
               TextFormField(
                 controller: _descCtrl,
                 decoration: InputDecoration(labelText: l.description),
-                maxLines: 3,
-              ),
-              const SizedBox(height: 12),
-              DropdownButtonFormField<EventState>(
-                initialValue: _state,
-                decoration: InputDecoration(labelText: l.state),
-                items: EventState.values
-                    .map((s) => DropdownMenuItem(value: s, child: Text(_stateLabel(l, s))))
-                    .toList(),
-                onChanged: (v) => setState(() => _state = v ?? _state),
-              ),
-              const SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: _save,
-                child: Text(l.save),
+                maxLines: 4,
               ),
             ],
           ),
