@@ -17,7 +17,7 @@ class EventDetailPage extends StatelessWidget {
     final l = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(title: Text(l.events)),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: PixelCard(
           child: Column(
@@ -39,7 +39,7 @@ class EventDetailPage extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Text('${l.code}: ${event.code}', style: Theme.of(context).textTheme.bodySmall?.copyWith(fontFamily: 'monospace')),
-              const Spacer(),
+              const SizedBox(height: 24),
               Row(
                 children: [
                   Expanded(
