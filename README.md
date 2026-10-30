@@ -104,4 +104,4 @@ flutter run
 
 ## Licencia
 
-Proyecto personal.
+Este proyecto está bajo la licencia [MIT](LICENSE).
