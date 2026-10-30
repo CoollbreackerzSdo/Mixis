@@ -70,15 +70,8 @@ class _EventFormPageState extends State<EventFormPage> {
         padding: const EdgeInsets.all(16),
         child: Form(
           key: _formKey,
-          child: ListView(
+          child: Column(
             children: [
-              TextFormField(
-                controller: _nameCtrl,
-                decoration: InputDecoration(labelText: l.name),
-                validator: (v) =>
-                    (v == null || v.trim().isEmpty) ? l.requiredField : null,
-              ),
-              const SizedBox(height: 12),
               DropdownButtonFormField<EventState>(
                 initialValue: _state,
                 decoration: InputDecoration(labelText: l.state),
@@ -94,9 +87,20 @@ class _EventFormPageState extends State<EventFormPage> {
               ),
               const SizedBox(height: 12),
               TextFormField(
-                controller: _descCtrl,
-                decoration: InputDecoration(labelText: l.description),
-                maxLines: 4,
+                controller: _nameCtrl,
+                decoration: InputDecoration(labelText: l.name),
+                validator: (v) =>
+                    (v == null || v.trim().isEmpty) ? l.requiredField : null,
+              ),
+              const SizedBox(height: 12),
+              Expanded(
+                child: TextFormField(
+                  controller: _descCtrl,
+                  expands: true,
+                  maxLines: null,
+                  textAlignVertical: TextAlignVertical.top,
+                  decoration: InputDecoration(labelText: l.description),
+                ),
               ),
             ],
           ),
