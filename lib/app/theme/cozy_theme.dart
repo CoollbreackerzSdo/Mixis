@@ -76,9 +76,28 @@ class CozyTheme {
       chipTheme: ChipThemeData(
         backgroundColor: beige,
         selectedColor: terracotta,
-        labelStyle: GoogleFonts.nunito(color: brown, fontWeight: FontWeight.w600),
+        labelStyle: GoogleFonts.rubik(color: brown, fontWeight: FontWeight.w600),
         side: const BorderSide(color: brown, width: 2),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+      ),
+      popupMenuTheme: PopupMenuThemeData(
+        color: beige,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6),
+          side: const BorderSide(color: brown, width: 3),
+        ),
+        textStyle: GoogleFonts.rubik(color: brown, fontWeight: FontWeight.w600),
+      ),
+      dropdownMenuTheme: DropdownMenuThemeData(
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: beige,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(6),
+            borderSide: const BorderSide(color: brown, width: 2),
+          ),
+        ),
+        textStyle: GoogleFonts.rubik(color: brown, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -142,22 +161,41 @@ class CozyTheme {
       chipTheme: ChipThemeData(
         backgroundColor: darkSurface,
         selectedColor: darkTerracotta,
-        labelStyle: GoogleFonts.nunito(color: darkCream, fontWeight: FontWeight.w600),
+        labelStyle: GoogleFonts.rubik(color: darkCream, fontWeight: FontWeight.w600),
         side: const BorderSide(color: darkCream, width: 2),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
+      ),
+      popupMenuTheme: PopupMenuThemeData(
+        color: darkSurface,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(6),
+          side: const BorderSide(color: darkCream, width: 3),
+        ),
+        textStyle: GoogleFonts.rubik(color: darkCream, fontWeight: FontWeight.w600),
+      ),
+      dropdownMenuTheme: DropdownMenuThemeData(
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: darkSurface,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(6),
+            borderSide: const BorderSide(color: darkCream, width: 2),
+          ),
+        ),
+        textStyle: GoogleFonts.rubik(color: darkCream, fontWeight: FontWeight.w600),
       ),
     );
   }
 
   static TextTheme _textTheme(Color bodyColor, Color accent) {
     return TextTheme(
-      displayLarge: GoogleFonts.pressStart2p(fontSize: 26, color: accent, height: 1.3),
-      displayMedium: GoogleFonts.pressStart2p(fontSize: 20, color: accent, height: 1.3),
-      titleLarge: GoogleFonts.pressStart2p(fontSize: 16, color: bodyColor, height: 1.3),
-      titleMedium: GoogleFonts.nunito(fontSize: 16, fontWeight: FontWeight.w700, color: bodyColor),
-      bodyLarge: GoogleFonts.nunito(fontSize: 16, color: bodyColor),
-      bodyMedium: GoogleFonts.nunito(fontSize: 14, color: bodyColor),
-      labelLarge: GoogleFonts.pressStart2p(fontSize: 11, color: bodyColor),
+      displayLarge: GoogleFonts.rubik(fontSize: 26, fontWeight: FontWeight.w700, color: accent, height: 1.2),
+      displayMedium: GoogleFonts.rubik(fontSize: 20, fontWeight: FontWeight.w700, color: accent, height: 1.2),
+      titleLarge: GoogleFonts.rubik(fontSize: 18, fontWeight: FontWeight.w700, color: bodyColor, height: 1.2),
+      titleMedium: GoogleFonts.rubik(fontSize: 16, fontWeight: FontWeight.w600, color: bodyColor),
+      bodyLarge: GoogleFonts.rubik(fontSize: 16, color: bodyColor),
+      bodyMedium: GoogleFonts.rubik(fontSize: 14, color: bodyColor),
+      labelLarge: GoogleFonts.rubik(fontSize: 12, fontWeight: FontWeight.w700, color: bodyColor),
     );
   }
 }

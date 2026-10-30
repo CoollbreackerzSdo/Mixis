@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'package:mixis/app/localization/app_localizations.dart';
 import 'package:mixis/app/theme/pixel_decorations.dart';
@@ -42,11 +43,11 @@ class EventCard extends StatelessWidget {
             const SizedBox(height: 8),
             Row(
               children: [
-                Icon(Icons.calendar_today, size: 12, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)),
-                const SizedBox(width: 4),
+                Icon(Icons.calendar_month, size: 18, color: Theme.of(context).colorScheme.primary),
+                const SizedBox(width: 6),
                 Text(
-                  '${event.creation.day}/${event.creation.month}/${event.creation.year}',
-                  style: Theme.of(context).textTheme.bodySmall,
+                  DateFormat('dd/MM/yyyy HH:mm').format(event.creation),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(fontWeight: FontWeight.w600),
                 ),
                 const Spacer(),
                 Text(
