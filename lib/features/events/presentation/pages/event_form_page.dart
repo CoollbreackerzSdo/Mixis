@@ -74,12 +74,20 @@ class _EventFormPageState extends State<EventFormPage> {
             children: [
               DropdownButtonFormField<EventState>(
                 initialValue: _state,
+                dropdownColor: Theme.of(context).cardColor,
+                borderRadius: BorderRadius.circular(6),
                 decoration: InputDecoration(labelText: l.state),
                 items: EventState.values
                     .map(
                       (s) => DropdownMenuItem(
                         value: s,
-                        child: Text(_stateLabel(l, s)),
+                        child: Row(
+                          children: [
+                            Icon(_stateIcon(s), size: 18, color: _stateColor(context, s)),
+                            const SizedBox(width: 8),
+                            Text(_stateLabel(l, s)),
+                          ],
+                        ),
                       ),
                     )
                     .toList(),
@@ -107,6 +115,29 @@ class _EventFormPageState extends State<EventFormPage> {
         ),
       ),
     );
+  }
+
+  IconData _stateIcon(EventState s) {
+    switch (s) {
+      case EventState.complete:
+        return Icons.check_circle;
+      case EventState.process:
+        return Icons.hourglass_top;
+      case EventState.canceled:
+        return Icons.cancel;
+    }
+  }
+
+  Color _stateColor(BuildContext ctx, EventState s) {
+    final dark = Theme.of(ctx).brightness == Brightness.dark;
+    switch (s) {
+      case EventState.complete:
+        return dark ? const Color(0xFF9BC496) : const Color(0xFF7FA67A);
+      case EventState.process:
+        return dark ? const Color(0xFFE8C46A) : const Color(0xFFD9A441);
+      case EventState.canceled:
+        return dark ? const Color(0xFFE08A6B) : const Color(0xFFC96B4A);
+    }
   }
 
   String _stateLabel(AppLocalizations l, EventState s) {
