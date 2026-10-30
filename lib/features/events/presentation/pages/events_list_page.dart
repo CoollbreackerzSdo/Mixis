@@ -100,12 +100,26 @@ class _EventsListPageState extends State<EventsListPage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        onPressed: () =>
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (_) => const EventFormPage())),
-        child: const Icon(Icons.add, color: Colors.white),
+      floatingActionButton: GestureDetector(
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const EventFormPage()),
+        ),
+        child: Container(
+          width: 56,
+          height: 56,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary,
+            border: Border.all(color: Theme.of(context).colorScheme.onSurface, width: 3),
+            boxShadow: [
+              BoxShadow(
+                color: Theme.of(context).colorScheme.onSurface,
+                offset: const Offset(4, 4),
+                blurRadius: 0,
+              ),
+            ],
+          ),
+          child: const Icon(Icons.add, color: Colors.white, size: 28),
+        ),
       ),
     );
   }

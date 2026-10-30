@@ -72,19 +72,25 @@ class _EventFormPageState extends State<EventFormPage> {
           key: _formKey,
           child: ListView(
             children: [
+              TextFormField(
+                controller: _nameCtrl,
+                decoration: InputDecoration(labelText: l.name),
+                validator: (v) =>
+                    (v == null || v.trim().isEmpty) ? l.requiredField : null,
+              ),
+              const SizedBox(height: 12),
               DropdownButtonFormField<EventState>(
                 initialValue: _state,
                 decoration: InputDecoration(labelText: l.state),
                 items: EventState.values
-                    .map((s) => DropdownMenuItem(value: s, child: Text(_stateLabel(l, s))))
+                    .map(
+                      (s) => DropdownMenuItem(
+                        value: s,
+                        child: Text(_stateLabel(l, s)),
+                      ),
+                    )
                     .toList(),
                 onChanged: (v) => setState(() => _state = v ?? _state),
-              ),
-              const SizedBox(height: 12),
-              TextFormField(
-                controller: _nameCtrl,
-                decoration: InputDecoration(labelText: l.name),
-                validator: (v) => (v == null || v.trim().isEmpty) ? l.requiredField : null,
               ),
               const SizedBox(height: 12),
               TextFormField(

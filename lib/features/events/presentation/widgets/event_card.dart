@@ -6,6 +6,7 @@ import 'package:mixis/app/theme/pixel_decorations.dart';
 
 import '../../domain/entities/event.dart';
 import 'state_chip.dart';
+import 'code_badge.dart';
 
 class EventCard extends StatelessWidget {
   const EventCard({super.key, required this.event, this.onTap});
@@ -58,14 +59,7 @@ class EventCard extends StatelessWidget {
                       ),
                 ),
                 const Spacer(),
-                Text(
-                  '${l.code}: ${event.code.substring(0, 8)}',
-                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        fontFamily: 'monospace',
-                        fontWeight: FontWeight.w700,
-                        color: Theme.of(context).colorScheme.onSurface,
-                      ),
-                ),
+                CodeBadge(code: event.code.substring(0, 8), compact: true),
               ],
             ),
           ],

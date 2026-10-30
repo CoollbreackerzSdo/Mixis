@@ -7,6 +7,7 @@ import '../../../../app/theme/pixel_decorations.dart';
 import '../../domain/entities/event.dart';
 import '../providers/event_provider.dart';
 import '../widgets/state_chip.dart';
+import '../widgets/code_badge.dart';
 import 'event_form_page.dart';
 
 class EventDetailPage extends StatelessWidget {
@@ -67,14 +68,7 @@ class EventDetailPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 6),
-              Text(
-                '${l.code}: ${event.code}',
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      fontFamily: 'monospace',
-                      fontWeight: FontWeight.w700,
-                      color: Theme.of(context).colorScheme.onSurface,
-                    ),
-              ),
+              CodeBadge(code: event.code),
               const SizedBox(height: 12),
               StateChip(state: event.state),
               const SizedBox(height: 8),
