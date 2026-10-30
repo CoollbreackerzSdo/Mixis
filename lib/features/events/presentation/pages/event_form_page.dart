@@ -107,7 +107,10 @@ class _EventFormPageState extends State<EventFormPage> {
                   expands: true,
                   maxLines: null,
                   textAlignVertical: TextAlignVertical.top,
-                  decoration: InputDecoration(labelText: l.description),
+                  decoration: InputDecoration(
+                    labelText: l.description,
+                    alignLabelWithHint: true,
+                  ),
                 ),
               ),
             ],
